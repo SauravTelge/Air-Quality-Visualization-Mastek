@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Mapbox 1
+        </title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'/>
+        <script src="../static/assets/js/threebox.js"></script>
+    </head>
+
+    <body>
+        <script src="https://unpkg.com/three@0.106.2/build/three.min.js"></script>
+        <script src="https://unpkg.com/three@0.106.2/examples/js/loaders/GLTFLoader.js"></script>
+        <div id='map' style='width: 900px; height: 600px;'></div>
+        <script>
+        mapboxgl.accessToken = "{{ mapbox_access_token }}";
+
+
+        function determineHeight(aqi){
+            var height = aqi/10;
+            return height;
+        }
+
+        function determineColor(aqi){
+            var color;
+            if (aqi>=0 && aqi<=50){
+                color = 0x66ff33;
+            }
+            else if (aqi>=51 && aqi<=100){
+                color = 0x009933;
+            }
+            else if (aqi>=101 && aqi<=200){
+                color = 0x33cc33;
+            }
+            else if (aqi>=201 && aqi<=300){
+                color = 0xffff00;
+            }
+            else if (aqi>=301 && aqi<=400){
+                color = 0xff6600;
+            }
+            else if (aqi>=401 && aqi<=500){
+                color = 0xff0000;
+            }
+            return color;
+        }
+
+        var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [72.90486907, 19.03731134,], // starting position [lng, lat]
+        zoom: 10 // starting zoom
+        });
+        var origin = [-122.4340, 37.7353,0];
+        var newOrigin = [[72.90486907, 19.03731134],[72.93478977, 19.04777195],[72.88858949, 19.03881801],
+                        [72.93770344, 19.05565485],[72.89641867, 19.06860634],[72.92426129882418,19.039254669840478]];
+        var aqi = [324,300,420,243,260,122];
+
+        map.on('style.load', function() {
+
+    map.addLayer({
+    id: 'custom_layer',
+    type: 'custom',
+    onAdd: function(map, mbxContext){
+
+        tb = new Threebox(
+            map, 
+            mbxContext,
+            {defaultLights: true}
+        );
+
+        // initialize geometry and material of our cube object
+        for (i=0; i<newOrigin.length; i++){
+        var geometry = new THREE.BoxGeometry(10, 10, determineHeight(aqi[i]));
+
+        var redMaterial = new THREE.MeshPhongMaterial( {
+            color: determineColor(aqi[i]), 
+            side: THREE.DoubleSide
+        });
+
+        var cube = new THREE.Mesh(geometry, redMaterial);
+
+        cube = tb.Object3D({obj: cube})
+            .setCoords(newOrigin[i])
+
+        tb.add(cube)
+    };
+},
+    
+    render: function(gl, matrix){
+        tb.update();
+    }
+
+});
+});
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+    <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_8b7f0c437aab4157b01cef5503dc27f0 {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+            z-index: 10;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="folium-map" id="map_8b7f0c437aab4157b01cef5503dc27f0">
+        <div><img src="our_airq_idx_h.jpg.jpg" alt="" srcset="" style=" position:absolute;z-index: 100;"></div>
+    </div>
+
+</body>
+<script>
+    var map_8b7f0c437aab4157b01cef5503dc27f0 = L.map(
+        "map_8b7f0c437aab4157b01cef5503dc27f0", {
+            center: [19.076, 72.8777],
+            crs: L.CRS.EPSG3857,
+            zoom: 12,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+
+
+
+
+
+    var tile_layer_698f68b3bd854b1dbe5e36c8ab415ad3 = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            "attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.",
+            "detectRetina": false,
+            "maxNativeZoom": 18,
+            "maxZoom": 18,
+            "minZoom": 0,
+            "noWrap": false,
+            "opacity": 1,
+            "subdomains": "abc",
+            "tms": false
+        }
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var marker_2c8b4d87993d4b2e9e70347992f07617 = L.marker(
+        [19.04465280219881, 72.90984132790611], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+    // fetch("http://api.airpollutionapi.com/1.0/aqi?lat=19.04465280219881&lon=72.90984132790611&APPID=p5c97ntv1253a6057han76orif")
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         var aqivalue = data['data']['value']
+    //     })
+    var popup_4482a9573ccb48a4aeba1f2c515d19c5 = L.popup({
+        "maxWidth": "100%"
+    });
+    // console.log(aqivalue)
+    // console.log($(`<div id="html_4b9f9ef9527a469c8ccd99d98ef3c4c4" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0])
+    var html_4b9f9ef9527a469c8ccd99d98ef3c4c4 = $(`<div id="html_4b9f9ef9527a469c8ccd99d98ef3c4c4" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_4482a9573ccb48a4aeba1f2c515d19c5.setContent(html_4b9f9ef9527a469c8ccd99d98ef3c4c4);
+
+
+    marker_2c8b4d87993d4b2e9e70347992f07617.bindPopup(popup_4482a9573ccb48a4aeba1f2c515d19c5);
+
+
+
+
+    marker_2c8b4d87993d4b2e9e70347992f07617.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_57766f6ac203447188a9ecb9299487f5 = L.marker(
+        [19.064364873172156, 72.86786349947161], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_926410a0dac9463c989b9963d0da7cf9 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_59c6ea60173547738379cf2fabe7e88a = $(`<div id="html_59c6ea60173547738379cf2fabe7e88a" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_926410a0dac9463c989b9963d0da7cf9.setContent(html_59c6ea60173547738379cf2fabe7e88a);
+
+
+    marker_57766f6ac203447188a9ecb9299487f5.bindPopup(popup_926410a0dac9463c989b9963d0da7cf9);
+
+
+
+
+    marker_57766f6ac203447188a9ecb9299487f5.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_3804b9ddd1454e7ba1c0299d3d97d486 = L.marker(
+        [19.05545175637506, 72.82656422108921], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_80fbf14f1fee453ea65cf49463f7cfb4 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_a9fc6a256dd6435abf9e3045999f9ff7 = $(`<div id="html_a9fc6a256dd6435abf9e3045999f9ff7" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_80fbf14f1fee453ea65cf49463f7cfb4.setContent(html_a9fc6a256dd6435abf9e3045999f9ff7);
+
+
+    marker_3804b9ddd1454e7ba1c0299d3d97d486.bindPopup(popup_80fbf14f1fee453ea65cf49463f7cfb4);
+
+
+
+
+    marker_3804b9ddd1454e7ba1c0299d3d97d486.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_ceb54e71c11b4d158719e35852aadaa7 = L.marker(
+        [19.04465280219881, 72.90984132790611], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_b268cdc88bcd4d30b1966ecedb842a64 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_d34a4085b5e743319f980f5ef7ec5042 = $(`<div id="html_d34a4085b5e743319f980f5ef7ec5042" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_b268cdc88bcd4d30b1966ecedb842a64.setContent(html_d34a4085b5e743319f980f5ef7ec5042);
+
+
+    marker_ceb54e71c11b4d158719e35852aadaa7.bindPopup(popup_b268cdc88bcd4d30b1966ecedb842a64);
+
+
+
+
+    marker_ceb54e71c11b4d158719e35852aadaa7.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_878ad572196048f482adad8d5be9c814 = L.marker(
+        [19.110629801708576, 72.85613290070414], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_3eadc2503b55455b9a5f5ed34738b30e = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_6d5eab6410c44754a64042065f23d10b = $(`<div id="html_6d5eab6410c44754a64042065f23d10b" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_3eadc2503b55455b9a5f5ed34738b30e.setContent(html_6d5eab6410c44754a64042065f23d10b);
+
+
+    marker_878ad572196048f482adad8d5be9c814.bindPopup(popup_3eadc2503b55455b9a5f5ed34738b30e);
+
+
+
+
+    marker_878ad572196048f482adad8d5be9c814.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_0409fd0f8f14487ea7482083063e01fd = L.marker(
+        [19.089904207325944, 72.86560366841502], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_18d0f563636b4b12b760f31c2f4c16e0 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_927d10306ac24e4eaf796de883901682 = $(`<div id="html_927d10306ac24e4eaf796de883901682" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_18d0f563636b4b12b760f31c2f4c16e0.setContent(html_927d10306ac24e4eaf796de883901682);
+
+
+    marker_0409fd0f8f14487ea7482083063e01fd.bindPopup(popup_18d0f563636b4b12b760f31c2f4c16e0);
+
+
+
+
+    marker_0409fd0f8f14487ea7482083063e01fd.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_b7b1a7508164468cbfe70fce13eff75f = L.marker(
+        [18.90351568034776, 72.81043574558825], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_37d8683ea84045bab582839fd0734f3c = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_987d466365bc44a2a4e717ef390875d6 = $(`<div id="html_987d466365bc44a2a4e717ef390875d6" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_37d8683ea84045bab582839fd0734f3c.setContent(html_987d466365bc44a2a4e717ef390875d6);
+
+
+    marker_b7b1a7508164468cbfe70fce13eff75f.bindPopup(popup_37d8683ea84045bab582839fd0734f3c);
+
+
+
+
+    marker_b7b1a7508164468cbfe70fce13eff75f.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_d9bceb4be55f4abaa822345a8f2adb1c = L.marker(
+        [19.20628043782494, 72.87172765689999], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_46be89a56dac428dab64ada63bd5b2ba = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_37ee54af173f460db93a4b7a5081cc5a = $(`<div id="html_37ee54af173f460db93a4b7a5081cc5a" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_46be89a56dac428dab64ada63bd5b2ba.setContent(html_37ee54af173f460db93a4b7a5081cc5a);
+
+
+    marker_d9bceb4be55f4abaa822345a8f2adb1c.bindPopup(popup_46be89a56dac428dab64ada63bd5b2ba);
+
+
+
+
+    marker_d9bceb4be55f4abaa822345a8f2adb1c.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_c46730cc89e346feb9b6ce16b9106fed = L.marker(
+        [19.156642521732422, 72.92324194613087], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_b2fb3df09ddb4863b1ca7d47592875cf = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_c41d17e33b0b4aa8b731f74aff3d225d = $(`<div id="html_c41d17e33b0b4aa8b731f74aff3d225d" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_b2fb3df09ddb4863b1ca7d47592875cf.setContent(html_c41d17e33b0b4aa8b731f74aff3d225d);
+
+
+    marker_c46730cc89e346feb9b6ce16b9106fed.bindPopup(popup_b2fb3df09ddb4863b1ca7d47592875cf);
+
+
+
+
+    marker_c46730cc89e346feb9b6ce16b9106fed.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_6f8ba16a96334259aa9213ea25020026 = L.marker(
+        [19.070901066106238, 72.87859932324274], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_f231818d64514b8ebece04c318e0dacb = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_a236aefb252c45368cc132a5d9038058 = $(`<div id="html_a236aefb252c45368cc132a5d9038058" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_f231818d64514b8ebece04c318e0dacb.setContent(html_a236aefb252c45368cc132a5d9038058);
+
+
+    marker_6f8ba16a96334259aa9213ea25020026.bindPopup(popup_f231818d64514b8ebece04c318e0dacb);
+
+
+
+
+    marker_6f8ba16a96334259aa9213ea25020026.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_062712cbf8ea4172b9a5834e37a032c9 = L.marker(
+        [19.18900885531423, 72.80699726022812], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_16ce10ae1dc242b18448ffb70ea1008b = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_eda880fe49be47d0bbde7d1ffe449d1a = $(`<div id="html_eda880fe49be47d0bbde7d1ffe449d1a" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_16ce10ae1dc242b18448ffb70ea1008b.setContent(html_eda880fe49be47d0bbde7d1ffe449d1a);
+
+
+    marker_062712cbf8ea4172b9a5834e37a032c9.bindPopup(popup_16ce10ae1dc242b18448ffb70ea1008b);
+
+
+
+
+    marker_062712cbf8ea4172b9a5834e37a032c9.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_c694fdd040b14bf5941c04e71447467c = L.marker(
+        [18.947214809983333, 72.8419567836574], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_07e048f5c1a349758da22238d42b0781 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_baa61e6371de4451828f9521c7ad726e = $(`<div id="html_baa61e6371de4451828f9521c7ad726e" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_07e048f5c1a349758da22238d42b0781.setContent(html_baa61e6371de4451828f9521c7ad726e);
+
+
+    marker_c694fdd040b14bf5941c04e71447467c.bindPopup(popup_07e048f5c1a349758da22238d42b0781);
+
+
+
+
+    marker_c694fdd040b14bf5941c04e71447467c.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_cd8e908f428141468e384e98d7ccfcb3 = L.marker(
+        [19.169805241811282, 72.93757457205092], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_e5ede09c8deb44e38814ea2bb898c9d7 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_4946b14a093a4c24a3d64239830c4f8e = $(`<div id="html_4946b14a093a4c24a3d64239830c4f8e" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_e5ede09c8deb44e38814ea2bb898c9d7.setContent(html_4946b14a093a4c24a3d64239830c4f8e);
+
+
+    marker_cd8e908f428141468e384e98d7ccfcb3.bindPopup(popup_e5ede09c8deb44e38814ea2bb898c9d7);
+
+
+
+
+    marker_cd8e908f428141468e384e98d7ccfcb3.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_d78c78e3b4bf465bb33e3fc277fd9c2a = L.marker(
+        [18.900048804597912, 72.80899023972485], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_ee58ad884d774028aaa79f139d2b78cb = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_82b933b47b6b40d1b1815660bf9268cd = $(`<div id="html_82b933b47b6b40d1b1815660bf9268cd" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_ee58ad884d774028aaa79f139d2b78cb.setContent(html_82b933b47b6b40d1b1815660bf9268cd);
+
+
+    marker_d78c78e3b4bf465bb33e3fc277fd9c2a.bindPopup(popup_ee58ad884d774028aaa79f139d2b78cb);
+
+
+
+
+    marker_d78c78e3b4bf465bb33e3fc277fd9c2a.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_1e4c66eee1c44c539013cac9f1b959e8 = L.marker(
+        [19.12302002615906, 72.89534995825736], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_13a336494ea14c33a4f067c18e061392 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_5c662e417d4a499ea1bfbfe353819439 = $(`<div id="html_5c662e417d4a499ea1bfbfe353819439" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_13a336494ea14c33a4f067c18e061392.setContent(html_5c662e417d4a499ea1bfbfe353819439);
+
+
+    marker_1e4c66eee1c44c539013cac9f1b959e8.bindPopup(popup_13a336494ea14c33a4f067c18e061392);
+
+
+
+
+    marker_1e4c66eee1c44c539013cac9f1b959e8.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_ef1b121c498b480bb58af5f5924c2e36 = L.marker(
+        [18.99890450475561, 72.81475534647132], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_22d4b0dfc45c42689d66417d2ec7315c = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_fee90e232e2a41fe9ef7fe7aca36cd40 = $(`<div id="html_fee90e232e2a41fe9ef7fe7aca36cd40" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_22d4b0dfc45c42689d66417d2ec7315c.setContent(html_fee90e232e2a41fe9ef7fe7aca36cd40);
+
+
+    marker_ef1b121c498b480bb58af5f5924c2e36.bindPopup(popup_22d4b0dfc45c42689d66417d2ec7315c);
+
+
+
+
+    marker_ef1b121c498b480bb58af5f5924c2e36.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_a802e29de69b479895658c9ac3fc7eda = L.marker(
+        [19.041939803847875, 72.87276962154134], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_3535af15cf7947bc8822f7c0e19a2289 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_a361bd37102e4063857c4e600b82d51f = $(`<div id="html_a361bd37102e4063857c4e600b82d51f" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_3535af15cf7947bc8822f7c0e19a2289.setContent(html_a361bd37102e4063857c4e600b82d51f);
+
+
+    marker_a802e29de69b479895658c9ac3fc7eda.bindPopup(popup_3535af15cf7947bc8822f7c0e19a2289);
+
+
+
+
+    marker_a802e29de69b479895658c9ac3fc7eda.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_bd8c91cd07f645e18ac8899ff51ef1c5 = L.marker(
+        [19.381638536650925, 72.80234975422546], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_075d364a64a24bd49cafe25dd3bd6097 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_756279ba6e934d28ac6726028a26bacd = $(`<div id="html_756279ba6e934d28ac6726028a26bacd" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_075d364a64a24bd49cafe25dd3bd6097.setContent(html_756279ba6e934d28ac6726028a26bacd);
+
+
+    marker_bd8c91cd07f645e18ac8899ff51ef1c5.bindPopup(popup_075d364a64a24bd49cafe25dd3bd6097);
+
+
+
+
+    marker_bd8c91cd07f645e18ac8899ff51ef1c5.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_a782042330f246298c7aec318d0c46ff = L.marker(
+        [19.09237857646926, 72.85862289838616], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_9fa2774b8a5c46e996b09393d081fc37 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_5af479f2a7dd42658fe5044019d2f6c6 = $(`<div id="html_5af479f2a7dd42658fe5044019d2f6c6" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_9fa2774b8a5c46e996b09393d081fc37.setContent(html_5af479f2a7dd42658fe5044019d2f6c6);
+
+
+    marker_a782042330f246298c7aec318d0c46ff.bindPopup(popup_9fa2774b8a5c46e996b09393d081fc37);
+
+
+
+
+    marker_a782042330f246298c7aec318d0c46ff.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_7b0d608586664f9a8a025619053a4dc4 = L.marker(
+        [119.00116996524426, 72.82026985752628], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_823e3d1edfbd452992bcb59eb0695bfe = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_129cfb75c6d64cc39a2c3794c83fbb1e = $(`<div id="html_129cfb75c6d64cc39a2c3794c83fbb1e" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_823e3d1edfbd452992bcb59eb0695bfe.setContent(html_129cfb75c6d64cc39a2c3794c83fbb1e);
+
+
+    marker_7b0d608586664f9a8a025619053a4dc4.bindPopup(popup_823e3d1edfbd452992bcb59eb0695bfe);
+
+
+
+
+    marker_7b0d608586664f9a8a025619053a4dc4.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_a2f4436bb7ce4b87af0f8830992cfa72 = L.marker(
+        [19.155328027173237, 73.00089408540664], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_009e9cb9cc794a178e1fef4d34e343bc = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_feb95eb878974b3a9a9c78d640baeeb8 = $(`<div id="html_feb95eb878974b3a9a9c78d640baeeb8" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_009e9cb9cc794a178e1fef4d34e343bc.setContent(html_feb95eb878974b3a9a9c78d640baeeb8);
+
+
+    marker_a2f4436bb7ce4b87af0f8830992cfa72.bindPopup(popup_009e9cb9cc794a178e1fef4d34e343bc);
+
+
+
+
+    marker_a2f4436bb7ce4b87af0f8830992cfa72.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_d656e35d5ae94fc68b7c5eb9512f171c = L.marker(
+        [19.12578132065363, 73.03800572269503], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_c84939e44eb143f897ba1fda56ff2163 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_093a348b928045c5b60f91084b697563 = $(`<div id="html_093a348b928045c5b60f91084b697563" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_c84939e44eb143f897ba1fda56ff2163.setContent(html_093a348b928045c5b60f91084b697563);
+
+
+    marker_d656e35d5ae94fc68b7c5eb9512f171c.bindPopup(popup_c84939e44eb143f897ba1fda56ff2163);
+
+
+
+
+    marker_d656e35d5ae94fc68b7c5eb9512f171c.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_1fd3f8ca2d1447d6bd32cca2c3af7f90 = L.marker(
+        [19.03340673160977, 73.0137849480881], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_f85a6db9d06540eabbd2a81cb2f11dc5 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_0d0c9318887047de8fa2f2e88394a1f2 = $(`<div id="html_0d0c9318887047de8fa2f2e88394a1f2" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_f85a6db9d06540eabbd2a81cb2f11dc5.setContent(html_0d0c9318887047de8fa2f2e88394a1f2);
+
+
+    marker_1fd3f8ca2d1447d6bd32cca2c3af7f90.bindPopup(popup_f85a6db9d06540eabbd2a81cb2f11dc5);
+
+
+
+
+    marker_1fd3f8ca2d1447d6bd32cca2c3af7f90.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+
+
+    var marker_c26d1c91f6e54c0fbb88c426e2b6a736 = L.marker(
+        [19.02857608122655, 73.02376338190635], {}
+    ).addTo(map_8b7f0c437aab4157b01cef5503dc27f0);
+
+
+    var popup_9ea21373496a4f938a283d6108b08734 = L.popup({
+        "maxWidth": "100%"
+    });
+
+
+    var html_4294efa1e7104aa3be19e63c39e5547d = $(`<div id="html_4294efa1e7104aa3be19e63c39e5547d" style="width: 100.0%; height: 100.0%;">AQI:</div>`)[0];
+    popup_9ea21373496a4f938a283d6108b08734.setContent(html_4294efa1e7104aa3be19e63c39e5547d);
+
+
+    marker_c26d1c91f6e54c0fbb88c426e2b6a736.bindPopup(popup_9ea21373496a4f938a283d6108b08734);
+
+
+
+
+    marker_c26d1c91f6e54c0fbb88c426e2b6a736.bindTooltip(
+        `<div>
+                     <strong>Click to view AQI</strong>
+                 </div>`, {
+            "sticky": true
+        }
+    );
+</script>

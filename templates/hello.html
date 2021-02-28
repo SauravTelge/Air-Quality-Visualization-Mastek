@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Awesome Map</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.min.js"></script>
+    </head>
+    <body>
+        <div style="width:800px;height:600px;" id="map"></div>
+ <script type="text/javascript">
+   // create map in div 'map'
+   var map = new maptalks.Map('map', {
+     center: [0, 0],
+     zoom: 2,
+     baseLayer: new maptalks.TileLayer('base', {
+       'urlTemplate' : 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+       'subdomains'  : ['a','b','c','d'],
+       'attribution'  : '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, '+
+       '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+     })
+   });
+
+   var multiPolygon = new maptalks.MultiPolygon([
+        [[[-0.131049, 51.503568], [-0.107049, 51.503568], [-0.107049, 51.501568], [-0.131049, 51.501568]]],
+        [[[-0.131049, 51.498568], [-0.107049, 51.498568], [-0.107049, 51.496568], [-0.131049, 51.496568]]],
+        [[[-0.131049, 51.493568], [-0.107049, 51.493568], [-0.107049, 51.491568], [-0.131049, 51.491568]]]
+      ], {
+        visible : true,
+        editable : true,
+        cursor : null,
+        shadowBlur : 0,
+        shadowColor : 'black',
+        draggable : false,
+        dragShadow : false, // display a shadow during dragging
+        drawOnAxis : null,  // force dragging stick on a axis, can be: x, y
+        symbol: {
+          'lineColor' : '#34495e',
+          'lineWidth' : 2,
+          'polygonFill' : 'rgb(135,196,240)',
+          'polygonOpacity' : 0.6
+        }
+      });
+
+      new maptalks.VectorLayer('vector', multiPolygon).addTo(map);
+ </script>
+    </body>
+</html>
