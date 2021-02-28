@@ -10,6 +10,8 @@ import plotly.graph_objs as go
 import folium
 import requests
 from folium.plugins import MarkerCluster, FeatureGroupSubGroup, Fullscreen
+import plotly.express as px
+from plotly.subplots import make_subplots
 # Initialize the Flask app
 app = Flask(__name__)
 model=pickle.load(open('model.pkl', 'rb'))
@@ -197,76 +199,262 @@ def home():
 
 # #     subgroup.add_to(m)
 # #     folium.LayerControl(collapsed=False).add_to(m)
+    # dat = pd.read_excel('m-ward.xlsx')
+    # risk = [[x for x in range(240)] for y in range(240)]
+
+    # dict1={"AQI":[],"time":[],"city":[],"pm2.5":[],"risk":risk,"o3":[]}
+    # def create_plot():
+    #     # for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
+    #     querystring = {"lat":"72.18","lon":"22.56","hours":"72"}
+    #     url = "https://air-quality.p.rapidapi.com/forecast/airquality"
+    #     headers = {
+    #         'x-rapidapi-key': "9a6ba754b5mshc3a4204662632f8p195c72jsn3c383b057633",
+    #         'x-rapidapi-host': "air-quality.p.rapidapi.com"
+    #         }
+
+    #     response1 = requests.request("GET", url, headers=headers, params=querystring)
+    #     if response1:
+    #         print("in r1")
+    #         pretty_json1 = json.loads(response1.text)
+
+    #         if pretty_json1:
+    #             print(pretty_json1['data'][5]['timestamp_local'])
+    #         else:
+    #             print("null")
+
+        # for i in range(0,48):
+        #     time1 = pretty_json1['data'][i]['timestamp_local']
+        #     aqi=pretty_json1['data'][i]['aqi']
+        #     city=pretty_json1['city_name']
+        #     pm25=pretty_json1['data'][i]['pm25']
+        #     o3=pretty_json1['data'][i]['o3']
+        #     dict1['o3'].append(o3)
+        #     dict1['AQI'].append(aqi)
+        #     dict1['time'].append(time1)
+        #     dict1['city'].append(city)
+        #     dict1['pm2.5'].append(pm25)
+        # for i in range(len(dict1['pm2.5'])):
+        #     # print(dict1['risk'][i])
+        #     if dict1['pm2.5'][i]>0 and dict1['pm2.5'][i]<50:
+        #         dict1['risk'][i]='0'
+        #     elif dict1['pm2.5'][i]>50 and dict1['pm2.5'][i]<100:
+        #         dict1['risk'][i]='1'
+        #     elif dict1['pm2.5'][i]>100 and dict1['pm2.5'][i]<200:
+        #         dict1['risk'][i]='2'
+        #     elif dict1['pm2.5'][i]>200 and dict1['pm2.5'][i]<300:
+        #         dict1['risk'][i]='3'
+        #     elif dict1['pm2.5'][i]>300 and dict1['pm2.5'][i]<400:
+        #         dict1['risk'][i]='4'
+        #     elif dict1['pm2.5'][i]>400 and dict1['pm2.5'][i]<500:
+        #         dict1['risk'][i]='5'
+        # df=pd.DataFrame(dict1)
+
+        # fig2 = px.scatter(df, x='pm2.5', y='risk', color='city', size='pm2.5', size_max=40, 
+        #             hover_name='city' , log_x=True,animation_frame='time',
+        #             animation_group='risk',range_x=[1, 500],range_y=[-1,6])
+        # graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+
+        # return graphJSON2
+    # bar = create_plot()
     return render_template("index.html",maxAqi = maxAqi, minAqi = minAqi, count = count, time = time, minStn = minStn, maxStn = maxStn )
 @app.route("/map",methods=['POST','GET'])
 def map():
     return render_template("name1.html" )
+@app.route("/conc")
+def conc():
+    return render_template("conc.html" )
+@app.route("/mapbox1.html",methods=['POST','GET'])
+def barg():
+    mapbox_access_token = 'pk.eyJ1IjoidGVqYXMyMDAwIiwiYSI6ImNrbDVhdnZmcDI0ZXYyc3FvNDN2c2I1eW0ifQ.qBCt-xKnG1nCx7ibUcIOcg'
+    return render_template("mapbox1.html",mapbox_access_token=mapbox_access_token )
+@app.route("/mapbox3.html",methods=['POST','GET'])
+def heatg():
+    return render_template("mapbox3.html" )
+@app.route("/graphs.html")
+def graphe():
+    return render_template("graphs.html" )
+@app.route("/tables.html")
+def tables():
+    return render_template("tables.html" )
 @app.route("/predict",methods=['POST','GET'])
 def forecast():
     
     featuredict = request.form["inpt"]
     feature = str(featuredict)
-    df= pd.read_csv(f'{feature}.csv', index_col='Date',parse_dates=True)
-    df=df.drop(['Unnamed: 0'],axis=1)
-    df.tail()
-        
+    dat = pd.read_excel('m-ward.xlsx')
+    
 
-    from statsmodels.tsa.stattools import adfuller
-    def ad_test(dataset):
-        dftest = adfuller(dataset, autolag = 'AIC')
-        print("1. ADF : ",dftest[0])
-        print("2. P-Value : ", dftest[1])
-        print("3. Num Of Lags : ", dftest[2])
-        print("4. Num Of Observations Used For ADF Regression:",      dftest[3])
-        print("5. Critical Values :")
-        for key, val in dftest[4].items():
-            print("\t",key, ": ", val)
-    ad_test(df['AQI'])
+    # from statsmodels.tsa.stattools import adfuller
+    # def ad_test(dataset):
+    #     dftest = adfuller(dataset, autolag = 'AIC')
+    #     print("1. ADF : ",dftest[0])
+    #     print("2. P-Value : ", dftest[1])
+    #     print("3. Num Of Lags : ", dftest[2])
+    #     print("4. Num Of Observations Used For ADF Regression:",      dftest[3])
+    #     print("5. Critical Values :")
+    #     for key, val in dftest[4].items():
+    #         print("\t",key, ": ", val)
+    # ad_test(df['AQI'])
 
-    # from pmdarima import auto_arima
-    import warnings
-    warnings.filterwarnings("ignore")
+    # # from pmdarima import auto_arima
+    # import warnings
+    # warnings.filterwarnings("ignore")
 
-    # stepwise_fit = auto_arima(df['AQI'], trace=True,suppress_warnings=True)
-    # stepwise_fit.summary()
+    # # stepwise_fit = auto_arima(df['AQI'], trace=True,suppress_warnings=True)
+    # # stepwise_fit.summary()
 
-    from statsmodels.tsa.arima_model import ARIMA
-    model=ARIMA(df['AQI'],order=(1,0,0))
-    model=model.fit()
-    model.summary()
+    # from statsmodels.tsa.arima_model import ARIMA
+    # model=ARIMA(df['AQI'],order=(1,0,0))
+    # model=model.fit()
+    # model.summary()
 
-    index_future_dates = pd.date_range(start='2021-01-23', end = '2021-01-29')
-    pred = model.predict(start=len(df),end=len(df)+6,typ='levels',dynamic=False).rename("ARIMA predictions")
-    pred.index = index_future_dates
-    print(pred)
+    # index_future_dates = pd.date_range(start='2021-01-23', end = '2021-01-29')
+    # pred = model.predict(start=len(df),end=len(df)+6,typ='levels',dynamic=False).rename("ARIMA predictions")
+    # pred.index = index_future_dates
+    # print(pred)
 
-    aqival=pred.to_frame()
-    aqival.rename(columns={'ARIMA predictions':'AQI'}, inplace=True)
-    aqival.index.name = "Date"
-    print(aqival)
+    # aqival=pred.to_frame()
+    # aqival.rename(columns={'ARIMA predictions':'AQI'}, inplace=True)
+    # aqival.index.name = "Date"
+    # print(aqival)
 
-    dfnew = pd.concat([df,aqival])
-    dfnew['Date'] = dfnew.index
+    # dfnew = pd.concat([df,aqival])
+    # dfnew['Date'] = dfnew.index
 
     # model1[0].read_csv(feature)
     # dfnew=model1[1]
-    def create_plot():
-        def formatter(**kwargs):
-            height = kwargs['AI']
-            return "This bar is {:0.2f} units tall".format(height)
-        data = [
-            go.Bar(
-                x=dfnew['Date'], # assign x as the dataframe column 'x'
-                y=dfnew['AQI'],
-             )
-        ]
+    for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
+        if place==feature:
+            querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"72"}
+            url = "https://air-quality.p.rapidapi.com/forecast/airquality"
+            headers = {
+                'x-rapidapi-key': "9a6ba754b5mshc3a4204662632f8p195c72jsn3c383b057633",
+                'x-rapidapi-host': "air-quality.p.rapidapi.com"
+                }
+            # risk = [[x for x in range(240)] for y in range(240)]
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            pretty_json = json.loads(response.text)
+            dict1={"AQI":[],"time":[]}
+            for i in range(0,48):
+                time1 = pretty_json['data'][i]['timestamp_local']
+                aqi=pretty_json['data'][i]['aqi']
+                dict1['AQI'].append(aqi)
+                dict1['time'].append(time1)
+            
+            df=pd.DataFrame(dict1)
+            
+            # for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
 
-        graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+            # for i in range(0,48):
+            #     time1 = pretty_json1['data'][i]['timestamp_local']
+            #     aqi=pretty_json1['data'][i]['aqi']
+            #     city=pretty_json1['city_name']
+            #     pm25=pretty_json1['data'][i]['pm25']
+            #     o3=pretty_json1['data'][i]['o3']
+            #     dict1['o3'].append(o3)
+            #     dict1['AQI'].append(aqi)
+            #     dict1['time'].append(time1)
+            #     dict1['city'].append(city)
+            #     dict1['pm2.5'].append(pm25)
+            # for i in range(len(dict1['pm2.5'])):
+            #     # print(dict1['risk'][i])
+            #     if dict1['pm2.5'][i]>0 and dict1['pm2.5'][i]<50:
+            #         dict1['risk'][i]='0'
+            #     elif dict1['pm2.5'][i]>50 and dict1['pm2.5'][i]<100:
+            #         dict1['risk'][i]='1'
+            #     elif dict1['pm2.5'][i]>100 and dict1['pm2.5'][i]<200:
+            #         dict1['risk'][i]='2'
+            #     elif dict1['pm2.5'][i]>200 and dict1['pm2.5'][i]<300:
+            #         dict1['risk'][i]='3'
+            #     elif dict1['pm2.5'][i]>300 and dict1['pm2.5'][i]<400:
+            #         dict1['risk'][i]='4'
+            #     elif dict1['pm2.5'][i]>400 and dict1['pm2.5'][i]<500:
+            #         dict1['risk'][i]='5'
+            # df=pd.DataFrame(dict1)
+
+
+
+    def create_plot():
+        # def formatter(**kwargs):
+        #     height = kwargs['AI']
+        #     return "This bar is {:0.2f} units tall".format(height)
+        # data = [
+        #     go.Bar(
+        #         x=dfnew['Date'], # assign x as the dataframe column 'x'
+        #         y=dfnew['AQI'],
+        #      )
+        # ]
+        # fig2 = px.scatter(df, x='pm2.5', y='risk', color='city', size='pm2.5', size_max=40, 
+        #     hover_name='city' , log_x=True,animation_frame='time',
+        #     animation_group='risk',range_x=[1, 500],range_y=[-1,6])
+        # graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+        fig = px.bar(df,
+                    x='time',
+                    y='AQI',
+                    color='AQI',
+                    barmode='stack')
+        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
         return graphJSON
     bar = create_plot()
-    return render_template('index.html', plot=bar,maxAqi = maxAqi, minAqi = minAqi, count = count, time = time, minStn = minStn, maxStn = maxStn)
+    return render_template('index.html',plot=bar, maxAqi = maxAqi, minAqi = minAqi, count = count, time = time, minStn = minStn, maxStn = maxStn)
     # return render_template('index.html',predic=model1)
+# @app.route("/graphs.html")
+# def maps():
+#     dat = pd.read_excel('m-ward.xlsx')
+#     risk = [[x for x in range(240)] for y in range(240)]
+
+#     dict1={"AQI":[],"time":[],"city":[],"pm2.5":[],"risk":risk,"o3":[]}
+#     def create():
+#         for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
+#             querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"72"}
+#             url = "https://air-quality.p.rapidapi.com/forecast/airquality"
+#             headers = {
+#                 'x-rapidapi-key': "9a6ba754b5mshc3a4204662632f8p195c72jsn3c383b057633",
+#                 'x-rapidapi-host': "air-quality.p.rapidapi.com"
+#                 }
+
+#             response = requests.request("GET", url, headers=headers, params=querystring)
+        
+#             pretty_json = json.loads(response.text)
+
+
+
+#             for i in range(0,48):
+#                 time1 = pretty_json['data'][i]['timestamp_local']
+#                 aqi=pretty_json['data'][i]['aqi']
+#                 city=pretty_json['city_name']
+#                 pm25=pretty_json['data'][i]['pm25']
+#                 o3=pretty_json['data'][i]['o3']
+#                 dict1['o3'].append(o3)
+#                 dict1['AQI'].append(aqi)
+#                 dict1['time'].append(time1)
+#                 dict1['city'].append(city)
+#                 dict1['pm2.5'].append(pm25)
+#             for i in range(len(dict1['pm2.5'])):
+#                 # print(dict1['risk'][i])
+#                 if dict1['pm2.5'][i]>0 and dict1['pm2.5'][i]<50:
+#                     dict1['risk'][i]='0'
+#                 elif dict1['pm2.5'][i]>50 and dict1['pm2.5'][i]<100:
+#                     dict1['risk'][i]='1'
+#                 elif dict1['pm2.5'][i]>100 and dict1['pm2.5'][i]<200:
+#                     dict1['risk'][i]='2'
+#                 elif dict1['pm2.5'][i]>200 and dict1['pm2.5'][i]<300:
+#                     dict1['risk'][i]='3'
+#                 elif dict1['pm2.5'][i]>300 and dict1['pm2.5'][i]<400:
+#                     dict1['risk'][i]='4'
+#                 elif dict1['pm2.5'][i]>400 and dict1['pm2.5'][i]<500:
+#                     dict1['risk'][i]='5'
+#         df=pd.DataFrame(dict1)
+
+#         fig = px.scatter(df, x='pm2.5', y='risk', color='city', size='pm2.5', size_max=40, 
+#                     hover_name='city' , log_x=True,animation_frame='time',
+#                     animation_group='risk',range_x=[1, 500],range_y=[-1,6])
+#         graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+#         return graphJSON
+#     bar = create()
+#     return render_template('graphs.html',plot=bar)
 
 if __name__ == '__main__':
     app.run(debug=True)
