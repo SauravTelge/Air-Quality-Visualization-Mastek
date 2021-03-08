@@ -275,6 +275,36 @@ def graphe():
     return render_template("graphs.html" )
 @app.route("/tables.html")
 def tables():
+    dat = pd.read_excel('m-ward.xlsx')
+    for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
+        querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"72"}
+        url = "https://air-quality.p.rapidapi.com/forecast/airquality"
+        headers = {
+            'x-rapidapi-key': "9a6ba754b5mshc3a4204662632f8p195c72jsn3c383b057633",
+            'x-rapidapi-host': "air-quality.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+    
+        pretty_json = json.loads(response.text)
+        aqi = [x['aqi'] for x in pretty_json["data"]]
+        pm10 = [x['pm10'] for x in pretty_json["data"]]
+        pm25 = [x['pm25'] for x in pretty_json["data"]]
+        o3 = [x['o3'] for x in pretty_json["data"]]
+        so2 = [x['so2'] for x in pretty_json["data"]]
+        no2 = [x['no2'] for x in pretty_json["data"]]
+        date = [x['datetime'] for x in pretty_json["data"]]
+        co = [x['co'] for x in pretty_json["data"]]
+        fin = [date,aqi,pm10,pm25,o3,so2,no2,co]
+        lst  =[]
+
+        for i in range(len(aqi)):
+            lst.append([fin[j][i] for j in  range(len(fin))])
+        dict1={}
+        dict1["Data"]=lst 
+        out_file = open(f"templates/{place}.txt", "w") 
+        json.dump(dict1, out_file, indent = 6)  
+    
     return render_template("tables.html" )
 @app.route("/predict",methods=['POST','GET'])
 def forecast():
