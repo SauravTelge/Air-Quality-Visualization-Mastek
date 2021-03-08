@@ -26,10 +26,10 @@
 <body>
   <button id="btn1" onclick="mahul()" >Mahul</button>
   <button id="btn2" onclick="worli()">Worli</button>
-  <button id="btn3" onclick="govandi()">Govandi</button>
+  <!-- <button id="btn3" onclick="govandi()">Govandi</button>
   <button id="btn4" onclick="mankhurd()">Mankhurd</button>
   <button id="btn5" onclick="anushakti()">Anushakti</button>
-  <button id="btn6" onclick="chembur()">Worli</button>
+  <button id="btn6" onclick="chembur()">Worli</button> -->
   <div id="example">
     <table id="tbl1" class="display" cellspacing="0" width="100%" data-page-length='15'>
         <thead>
@@ -61,8 +61,8 @@
           </tr>
         </thead>
       </table>
-         </div>
-         <div id="example2" style="display: none;">
+    </div>
+         <!-- <div id="example2" style="display: none;">
           <table id="tbl3" class="display" cellspacing="0" width="100%" data-page-length='15'>
             <thead>
               <tr>
@@ -125,13 +125,13 @@
                           </tr>
                         </thead>
                       </table>
-                         </div>
+                         </div> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
     <script>
       function mahul(){
      
       $('#tbl1').dataTable({
-        "ajax": 'mahul.txt',
+        "ajax": 'Mahul.txt',
         "retrieve": true,
       
         "columnDefs": [{   /* changed this */
@@ -160,16 +160,16 @@
       
     document.getElementById('example').style.display = "block";
     document.getElementById('example1').style.display = "none";
-    document.getElementById('example2').style.display = "none";
-    document.getElementById('example3').style.display = "none";
-    document.getElementById('example4').style.display = "none";
-    document.getElementById('example5').style.display = "none";
+    // document.getElementById('example2').style.display = "none";
+    // document.getElementById('example3').style.display = "none";
+    // document.getElementById('example4').style.display = "none";
+    // document.getElementById('example5').style.display = "none";
 
   }
   function worli(){
       
       $('#tbl2').dataTable({
-        "ajax": 'worli.txt',
+        "ajax": 'Worli.txt',
         "retrieve": true,
         
         "columnDefs": [{   /* changed this */
@@ -196,148 +196,148 @@
       
     document.getElementById('example').style.display = "none";
     document.getElementById('example1').style.display = "block";
-    document.getElementById('example2').style.display = "none";
-    document.getElementById('example3').style.display = "none";
-    document.getElementById('example4').style.display = "none";
-    document.getElementById('example5').style.display = "none";
+    // document.getElementById('example2').style.display = "none";
+    // document.getElementById('example3').style.display = "none";
+    // document.getElementById('example4').style.display = "none";
+    // document.getElementById('example5').style.display = "none";
   }
-  function chembur(){
+  // function chembur(){
       
-      $('#tbl3').dataTable({
-        "ajax": 'chembur.txt',
-        "retrieve": true,
+  //     $('#tbl3').dataTable({
+  //       "ajax": 'Chembur.txt',
+  //       "retrieve": true,
         
-        "columnDefs": [{   /* changed this */
-          "data": "datetime"
-        },{   /* changed this */
-          "data": "aqi"
-        }, {
-          "data": "pm10"
-        }, {
-          "data": "pm25"
-        }, {
-          "data": "o3"
-        }, {
-          "data": "so2"
-        }, {
-          "data": "no2"
-        },{
-          "data": "co"
-        }],dom: "Bfrtip",
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
+  //       "columnDefs": [{   /* changed this */
+  //         "data": "datetime"
+  //       },{   /* changed this */
+  //         "data": "aqi"
+  //       }, {
+  //         "data": "pm10"
+  //       }, {
+  //         "data": "pm25"
+  //       }, {
+  //         "data": "o3"
+  //       }, {
+  //         "data": "so2"
+  //       }, {
+  //         "data": "no2"
+  //       },{
+  //         "data": "co"
+  //       }],dom: "Bfrtip",
+  //       buttons: [
+  //           'copy', 'csv', 'excel', 'pdf', 'print'
+  //       ]
+  //     });
       
-    document.getElementById('example').style.display = "none";
-    document.getElementById('example1').style.display = "none";
-    document.getElementById('example2').style.display = "block";
-    document.getElementById('example3').style.display = "none";
-    document.getElementById('example4').style.display = "none";
-    document.getElementById('example5').style.display = "none";
-  } function govandi(){
+  //   document.getElementById('example').style.display = "none";
+  //   document.getElementById('example1').style.display = "none";
+  //   document.getElementById('example2').style.display = "block";
+  //   document.getElementById('example3').style.display = "none";
+  //   document.getElementById('example4').style.display = "none";
+  //   document.getElementById('example5').style.display = "none";
+  // } function govandi(){
       
-      $('#tbl4').dataTable({
-        "ajax": 'govandi.txt',
-        "retrieve": true,
+  //     $('#tbl4').dataTable({
+  //       "ajax": 'Govandi.txt',
+  //       "retrieve": true,
         
-        "columnDefs": [{   /* changed this */
-          "data": "datetime"
-        },{   /* changed this */
-          "data": "aqi"
-        }, {
-          "data": "pm10"
-        }, {
-          "data": "pm25"
-        }, {
-          "data": "o3"
-        }, {
-          "data": "so2"
-        }, {
-          "data": "no2"
-        },{
-          "data": "co"
-        }],dom: "Bfrtip",
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
+  //       "columnDefs": [{   /* changed this */
+  //         "data": "datetime"
+  //       },{   /* changed this */
+  //         "data": "aqi"
+  //       }, {
+  //         "data": "pm10"
+  //       }, {
+  //         "data": "pm25"
+  //       }, {
+  //         "data": "o3"
+  //       }, {
+  //         "data": "so2"
+  //       }, {
+  //         "data": "no2"
+  //       },{
+  //         "data": "co"
+  //       }],dom: "Bfrtip",
+  //       buttons: [
+  //           'copy', 'csv', 'excel', 'pdf', 'print'
+  //       ]
+  //     });
       
-    document.getElementById('example').style.display = "none";
-    document.getElementById('example1').style.display = "none";
-    document.getElementById('example2').style.display = "none";
-    document.getElementById('example3').style.display = "block";
-    document.getElementById('example4').style.display = "none";
-    document.getElementById('example5').style.display = "none";
-  } function anushakti(){
+  //   document.getElementById('example').style.display = "none";
+  //   document.getElementById('example1').style.display = "none";
+  //   document.getElementById('example2').style.display = "none";
+  //   document.getElementById('example3').style.display = "block";
+  //   document.getElementById('example4').style.display = "none";
+  //   document.getElementById('example5').style.display = "none";
+  // } function anushakti(){
       
-      $('#tbl5').dataTable({
-        "ajax": 'anushakti.txt',
-        "retrieve": true,
+  //     $('#tbl5').dataTable({
+  //       "ajax": 'Anushakti.txt',
+  //       "retrieve": true,
         
-        "columnDefs": [{   /* changed this */
-          "data": "datetime"
-        },{   /* changed this */
-          "data": "aqi"
-        }, {
-          "data": "pm10"
-        }, {
-          "data": "pm25"
-        }, {
-          "data": "o3"
-        }, {
-          "data": "so2"
-        }, {
-          "data": "no2"
-        },{
-          "data": "co"
-        }],dom: "Bfrtip",
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
+  //       "columnDefs": [{   /* changed this */
+  //         "data": "datetime"
+  //       },{   /* changed this */
+  //         "data": "aqi"
+  //       }, {
+  //         "data": "pm10"
+  //       }, {
+  //         "data": "pm25"
+  //       }, {
+  //         "data": "o3"
+  //       }, {
+  //         "data": "so2"
+  //       }, {
+  //         "data": "no2"
+  //       },{
+  //         "data": "co"
+  //       }],dom: "Bfrtip",
+  //       buttons: [
+  //           'copy', 'csv', 'excel', 'pdf', 'print'
+  //       ]
+  //     });
       
-    document.getElementById('example').style.display = "none";
-    document.getElementById('example1').style.display = "none";
-    document.getElementById('example2').style.display = "none";
-    document.getElementById('example3').style.display = "none";
-    document.getElementById('example4').style.display = "block";
-    document.getElementById('example5').style.display = "none";
-  } function mankhurd(){
+  //   document.getElementById('example').style.display = "none";
+  //   document.getElementById('example1').style.display = "none";
+  //   document.getElementById('example2').style.display = "none";
+  //   document.getElementById('example3').style.display = "none";
+  //   document.getElementById('example4').style.display = "block";
+  //   document.getElementById('example5').style.display = "none";
+  // } function mankhurd(){
       
-      $('#tbl6').dataTable({
-        "ajax": 'mankhurd.txt',
-        "retrieve": true,
+  //     $('#tbl6').dataTable({
+  //       "ajax": 'Mankhurd.txt',
+  //       "retrieve": true,
         
-        "columnDefs": [{   /* changed this */
-          "data": "datetime"
-        },{   /* changed this */
-          "data": "aqi"
-        }, {
-          "data": "pm10"
-        }, {
-          "data": "pm25"
-        }, {
-          "data": "o3"
-        }, {
-          "data": "so2"
-        }, {
-          "data": "no2"
-        },{
-          "data": "co"
-        }],dom: "Bfrtip",
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
+  //       "columnDefs": [{   /* changed this */
+  //         "data": "datetime"
+  //       },{   /* changed this */
+  //         "data": "aqi"
+  //       }, {
+  //         "data": "pm10"
+  //       }, {
+  //         "data": "pm25"
+  //       }, {
+  //         "data": "o3"
+  //       }, {
+  //         "data": "so2"
+  //       }, {
+  //         "data": "no2"
+  //       },{
+  //         "data": "co"
+  //       }],dom: "Bfrtip",
+  //       buttons: [
+  //           'copy', 'csv', 'excel', 'pdf', 'print'
+  //       ]
+  //     });
       
-    document.getElementById('example').style.display = "none";
-    document.getElementById('example1').style.display = "none";
-    document.getElementById('example2').style.display = "none";
-    document.getElementById('example3').style.display = "none";
-    document.getElementById('example4').style.display = "none";
-    document.getElementById('example5').style.display = "block";
-  }
+  //   document.getElementById('example').style.display = "none";
+  //   document.getElementById('example1').style.display = "none";
+  //   document.getElementById('example2').style.display = "none";
+  //   document.getElementById('example3').style.display = "none";
+  //   document.getElementById('example4').style.display = "none";
+  //   document.getElementById('example5').style.display = "block";
+  // }
         </script>
 </body>
 </html>
