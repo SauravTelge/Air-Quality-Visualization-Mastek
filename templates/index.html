@@ -52,8 +52,11 @@
             background-color: #ffff99;
         }
         #sidenav-main{
-        background-color: #111;
-        color:white;
+            background-color: #111;
+            color:white;
+        }
+        .content {
+             height: 100%;
         }
     </style>
 
@@ -81,9 +84,7 @@
 </head>
 
 <body>
-<script>
-   AOS.init();
-</script>
+
     <!-- Sidenav -->
 
     <nav  class="navbar navbar-vertical fixed-left navbar-expand-md " id="sidenav-main"  >
@@ -95,7 +96,7 @@
             <!-- Brand -->
 
             <a class="navbar-brand pt-0" href="./index.html">
-                <h5 style="color:rgb(84, 154, 245); ">Air Quality Visualization</h6>
+                <h5 style="color:rgb(84, 154, 245); ">Air Quality Visualization</h5>
             </a>
             <!-- User -->
             <ul class="nav align-items-center d-md-none">
@@ -269,11 +270,12 @@
                     <!-- Card stats -->
                     <div class="row">
                         <div data-aos="zoom-out-down" class="col-xl-3 col-lg-6">
-                            <div class="card card-stats mb-4 mb-xl-0">
-                                <div class="card-body">
+                            <div class="card card-stats mb-4 mb-xl-0 content">
+                                <div  class="card-body ">
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Worst AQI</h5>
+                                            <br>
                                             <span class="h2 font-weight-bold mb-0">{{maxAqi}}</span>
                                         </div>
                                         <div class="col-auto">
@@ -282,19 +284,21 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <p class="mt-3 mb-0 text-muted text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i></span>
+                                        <span class="text-danger mr-2"><i class="fa fa-arrow-up"></i></span>
                                         <span class="text-nowrap">{{maxStn}}</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div data-aos="zoom-out-down" class="col-xl-3 col-lg-6">
-                            <div class="card card-stats mb-4 mb-xl-0">
-                                <div class="card-body">
+                            <div class="card card-stats mb-4 mb-xl-0 content">
+                                <div class="card-body ">
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Best AQI</h5>
+                                            <br>
                                             <span class="h2 font-weight-bold mb-0">{{minAqi}}</span>
                                         </div>
                                         <div class="col-auto">
@@ -303,15 +307,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <p class="mt-3 mb-0 text-muted text-sm">
-                                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i></span>
+                                        <span class="text-success mr-2"><i class="fas fa-arrow-down"></i></span>
                                         <span class="text-nowrap">{{minStn}}</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div data-aos="zoom-out-down" class="col-xl-3 col-lg-6">
-                            <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card card-stats mb-4 mb-xl-0 content">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -325,6 +330,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <p class="mt-3 mb-0 text-muted text-sm">
                                         <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> </span>
                                         <span class="text-nowrap">As of now</span>
@@ -333,8 +339,8 @@
                             </div>
                         </div>
                         <div data-aos="zoom-out-down" class="col-xl-3 col-lg-6">
-                            <div class="card card-stats mb-4 mb-xl-0">
-                                <div class="card-body">
+                            <div class="card card-stats mb-4 mb-xl-0 content">
+                                <div class="card-body ">
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Last Updated</h5>
@@ -347,6 +353,7 @@
 
                                         </div>
                                     </div>
+                                    <br>
                                     <p class="mt-3 mb-0 text-muted text-sm">
                                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                                         <span class="text-nowrap">Real Time</span>
@@ -574,22 +581,20 @@
     </div>
     </div>
     <!-- Footer -->
-    <footer class="footer">
-        <div data-aos="zoom-in" class="row align-items-center justify-content-xl-between">
+    <footer class="footer" style="background-color:#111;">
+        <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
-                <!-- <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-                </div> -->
+
             </div>
             <div class="col-xl-6">
-                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <ul class="nav nav-footer  ">
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link" target="_blank">About Us</a>
+                        <a href="" class="nav-link" target="_blank">About Us</a>
                     </li>
 
-                    <li class="nav-item" style="padding-right: 50px;">
-                        <a href="https://deepblue.co.in/" class="nav-link" target="_blank">Project Deep Blue</a>
+                    <li class="nav-item">
+                        <a href="https://deepblue.co.in/" class="nav-link" target="_blank">Deep Blue</a>
                     </li>
                 </ul>
             </div>
@@ -610,11 +615,10 @@
     <script src="../static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
     <!-- Argon JS -->
     <script src="../static/assets/js/argon.js"></script>
-    <script src="script.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script>
-        var graphs = {{plot | safe}};
+        var graphs = {{plot | safe}}
         Plotly.plot('bargraph', graphs, {});
     </script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
