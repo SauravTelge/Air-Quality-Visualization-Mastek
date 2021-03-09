@@ -67,7 +67,7 @@ for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
     out_file = open(f"templates/{place}.txt", "w") 
     json.dump(dict1, out_file, indent = 6)  
 
-dat = pd.read_excel('m-ward.xlsx')
+dat = pd.read_excel('E:\deepBlueGit\Trial-aqv\m-ward.xlsx')
 risk = [[x for x in range(240)] for y in range(240)]
 dict1={"AQI":[],"time":[],"city":[],"pm2.5":[],"risk":risk,"o3":[]}
 for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):

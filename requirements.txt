@@ -1,3 +1,10 @@
 flask
 python-dotenv
 requests
+pandas
+numpy
+plotly
+folium
+matplotlib
+xlrd
+openpyxl

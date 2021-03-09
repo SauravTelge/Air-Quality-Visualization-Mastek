@@ -51,12 +51,16 @@
         tr:hover {
             background-color: #ffff99;
         }
+        #sidenav-main{
+        background-color: #111;
+        color:white;
+        }
+
     </style>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
     <title>AQI Master</title>
     <!-- Favicon -->
     <link href="{{ url_for('static', filename='./assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
@@ -65,6 +69,8 @@
     <!-- Icons -->
     <link href="../static/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="../static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!--AOS-->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Argon CSS -->
     <link type="text/css" href="../static/assets/css/argon.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../static/assets/vendor/bootstrap/dist/min/bootstrap.min.css"> -->
@@ -74,16 +80,17 @@
 </head>
 
 <body>
+
     <!-- Sidenav -->
-    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
-        <div class="container-fluid">
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md "  id="sidenav-main">
+        <div data-aos="zoom-out-right" class="container-fluid">
             <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
             <!-- Brand -->
-            <a class="navbar-brand pt-0" href="./index.html">
-                <label>AQI Master</label>
+            <a class="navbar-brand pt-0" href="">
+                <h6 style="color:rgb(84, 154, 245); ">Air Quality Visualization</h6>
             </a>
             <!-- User -->
             <ul class="nav align-items-center d-md-none">
@@ -166,22 +173,30 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:5000/">
+                        <a style="color:white;" class="nav-link" href="http://127.0.0.1:5000/">
                             <i class="ni ni-tv-2 text-primary"></i> Dashboard
                         </a>
                     </li>
-
+                    <br>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:5000/graphs.html">
+                        <a style="color:white;" class="nav-link" href="http://127.0.0.1:5000/graphs.html">
                             <i class="ni ni-pin-3 text-orange"></i> Maps
                         </a>
                     </li>
-
+                    <br>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tables">
+                        <a style="color:white;" class="nav-link" href="http://127.0.0.1:5000/tables.html">
                             <i class="ni ni-bullet-list-67 text-red"></i> Tables
                         </a>
                     </li>
+                    </ul>
+                <br>
+
+
+                    <br>
+                     <div ><h6 style="color:yellow;">About Us</h6>
+                <p>Third Year computer engineering students studying at Vivekanand Education Society's Institute of Technology. Members of the team have worked on technology stacks such as Web development, Machine Learning, BlockChain. Currently working on AQV topic of the DEEP BLUE project. </p>
+               </div>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="./examples/login.html">
                             <i class="ni ni-key-25 text-info"></i> Login
@@ -192,33 +207,15 @@
                             <i class="ni ni-circle-08 text-pink"></i> Register
                         </a>
                     </li> -->
-                </ul>
+                <!--</ul>-->
             </div>
         </div>
     </nav>
 <!--***************************************************************************************************-->
     <!-- Main content -->
-    <div class="main-content">
-        <!-- Top navbar -->
-        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main" style="background-color:blue;">
-            <div class="container-fluid">
-                <!-- Brand -->
-                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-                <!-- Form -->
-                <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                    <div class="form-group mb-0">
-                        <div class="input-group input-group-alternative">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                            </div>
+    <div class="main-content" style="background-color:#111;">
 
-                        </div>
-                    </div>
-                </form>
-                <!-- User -->
 
-            </div>
-        </nav>
 
 
         <!-- 
@@ -226,11 +223,13 @@
 
         </div> -->
         <!-- <p style="margin-top: 150px; margin-left: 200px;">Select the gas:</p> -->
-        <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 150px; margin-left: 200px;">
+        <h3 style="margin-left: 60px; padding-top:5%; color:white;">Air Pollutants</h3>
+        <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 50px; margin-left: 180px; width: 150px; height: 40px;">
+
             <option value="0">pm 2.5</option>
             <option value="1">o3</option>
          </select>
-        
+
          
          <script type="text/javascript">
          function showDiv(select){
@@ -244,23 +243,28 @@
          } 
          </script>
             <div id="first">
-                <iframe src="http://127.0.0.1:5000/conc" frameborder="0" style="height: 500px;width: 1000px;"></iframe>
+                <br>
+                <iframe src="http://127.0.0.1:5000/conc" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
             </div>
             <div id="hidden_div" style="display: none;">
-                <iframe src="http://127.0.0.1:5000/" frameborder="0" style="height: 500px;width: 1000px;"></iframe>
+                <br>
+                <iframe src="http://127.0.0.1:5000/" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
             </div>
-    
-        <div id="first2">
-            <iframe src="http://127.0.0.1:5000/mapbox1.html" frameborder="0" style="height: 500px;width: 1000px;"></iframe>
-        </div>
-        <div id="hidden_div1" style="display: none;">
-            <iframe src="http://127.0.0.1:5000/mapbox3.html" frameborder="0" style="height: 500px;width: 1000px;"></iframe>
-        </div>
+        <br>
 
-        <select id="test1" name="form_select" onchange="showDiv(this)" style="margin-top: 150px; margin-left: 200px;">
+        <h3 style="margin: 60px; color:white;">Graphs</h3>
+     <select id="test1" name="form_select" onchange="showDiv(this)" style="margin-top: 10px; margin-left: 180px; width: 150px; height: 40px;">
             <option value="0">3D bar graph</option>
             <option value="1">3D heatmap</option>
          </select>
+        <div id="first2">
+            <iframe src="http://127.0.0.1:5000/mapbox1.html" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px; margin-top: 20px;"></iframe>
+        </div>
+        <div id="hidden_div1" style="display: none;">
+            <iframe src="http://127.0.0.1:5000/mapbox3.html" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px; margin-top: 20px;"></iframe>
+        </div>
+
+
         
          
          <script type="text/javascript">
@@ -284,22 +288,21 @@
 
 <!--********************************************************************************-->
 <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" style="background-color:#111;">
+
         <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
-                <!-- <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-                </div> -->
+
             </div>
             <div class="col-xl-6">
-                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <ul class="nav nav-footer  ">
 
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                        <a href="" class="nav-link" target="_blank">About Us</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                        <a href="https://deepblue.co.in/" class="nav-link" target="_blank">Deep Blue</a>
                     </li>
                 </ul>
             </div>
@@ -323,13 +326,17 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script>
-        var graphs = {{plot | safe}};
+        var graphs = {{plot | safe}}
         Plotly.plot('bargraph', graphs, {});
         // document.getElementById('test').addEventListener('change', function () {
         // var style = this.value == 1 ? 'block' : 'none';
         // document.getElementById('hidden_div').style.display = style;
         // });
     </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+   AOS.init();
+</script>
 
 </body>
 </html>
