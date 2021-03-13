@@ -55,6 +55,31 @@
         background-color: #111;
         color:white;
         }
+        .legends{
+              height: 400px;
+              width: 100px;
+              
+             
+            }
+            .legends h4{
+              position: relative;
+              left: 100%;
+            }
+            .row{
+              position:relative;
+              margin: 5px;
+            }
+            .col-1-1{
+              margin-right: 30%;
+              margin-left: 4px;
+              
+            }
+            
+            .legend{
+              width: 15.285%;
+              background-color: black;
+            }
+           
 
     </style>
 
@@ -185,7 +210,7 @@
                     </li>
                     <br>
                     <li class="nav-item">
-                        <a style="color:white;" class="nav-link" href="http://127.0.0.1:5000/tables.html">
+                        <a style="color:white;" class="nav-link" href="http://127.0.0.1:5000/templates/tables.html">
                             <i class="ni ni-bullet-list-67 text-red"></i> Tables
                         </a>
                     </li>
@@ -213,7 +238,7 @@
     </nav>
 <!--***************************************************************************************************-->
     <!-- Main content -->
-    <div class="main-content" style="background-color:#111;">
+    <div class="main-content bg-gradient-info" >
 
 
 
@@ -224,51 +249,182 @@
         </div> -->
         <!-- <p style="margin-top: 150px; margin-left: 200px;">Select the gas:</p> -->
         <h3 style="margin-left: 60px; padding-top:5%; color:white;">Air Pollutants</h3>
-        <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 50px; margin-left: 180px; width: 150px; height: 40px;">
+        <!-- <form action="/conc" method="post"> -->
+        <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 50px; width: 150px; height: 40px; margin-left: 1%;">
 
             <option value="0">pm 2.5</option>
             <option value="1">o3</option>
+            <!-- <option value="2">pm10</option>
+            <option value="3">no2</option>
+            <option value="4">so2</option>
+            <option value="5">co</option> -->
          </select>
-
+        <!-- </form> -->
          
-         <script type="text/javascript">
-         function showDiv(select){
-            if(select.value==1){
-             document.getElementById('hidden_div').style.display = "block";
-             document.getElementById('first').style.display = "none";
-            } else{
-             document.getElementById('hidden_div').style.display = "none";
-             document.getElementById('first').style.display = "block";
-            }
-         } 
-         </script>
-            <div id="first">
+        <!-- <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 150px; margin-left: 200px;">
+            <option value="0">pm 2.5</option>
+            <option value="1">o3</option>
+         </select> -->
+        
+         <div class="row">
+            <div class="col-lg-9 col-md-9"  style="padding-left: 20px;">
+            <div id="first" >
+                <iframe src="http://127.0.0.1:5000/concpm25" frameborder="0" style="height: 500px;width: 100%;"></iframe>
+            </div>
+            <div id="hidden_div" style="display: none; ">
+                <iframe src="http://127.0.0.1:5000/conco3" frameborder="0" style="height: 500px;width: 100%;margin-right: 30%;"></iframe>
+            </div>
+           
+                </div>
+                <div class="col-lg-3 col-md-3"   style="padding-left: 20px; color: black; right: 2%;" ><div class="jumbotron shadow-lg p-3 mb-5 bg-white rounded mx-auto" id="info"> Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.</div></div>
+    </div>
+            <!-- <div id="first">
                 <br>
-                <iframe src="http://127.0.0.1:5000/conc" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+                <iframe src="http://127.0.0.1:5000/concpm25" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
             </div>
             <div id="hidden_div" style="display: none;">
                 <br>
-                <iframe src="http://127.0.0.1:5000/" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+                <iframe src="http://127.0.0.1:5000/conco3" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
             </div>
-        <br>
+            <div id="hidden_div1" style="display: none;">
+                <br>
+                <iframe src="http://127.0.0.1:5000/concpm10" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+            </div>
+            <div id="hidden_div2" style="display: none;">
+                <br>
+                <iframe src="http://127.0.0.1:5000/concno2" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+            </div>
+            <div id="hidden_div3" style="display: none;">
+                <br>
+                <iframe src="http://127.0.0.1:5000/concso2" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+            </div>
+            <div id="hidden_div4" style="display: none;">
+                <br>
+                <iframe src="http://127.0.0.1:5000/concco" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px;"></iframe>
+            </div> -->
 
+        <br>
+        <script type="text/javascript">
+            function showDiv(select){
+               if(select.value==1){
+                   console.log("HI");
+                document.getElementById('hidden_div').style.display = "block";
+                document.getElementById('first').style.display = "none";
+                document.getElementById("info").innerHTML ="Ozone is a colorless gas that can be good or bad, depending on where it is. Ozone in the stratosphere is good because it shields the earth from the sun's ultraviolet rays. Ozone at ground level, where we breathe, is bad because it can harm human health.";
+    
+               } else{
+                console.log("HI");
+                document.getElementById('hidden_div').style.display = "none";
+                document.getElementById('first').style.display = "block";
+                document.getElementById("info").innerHTML ="Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.";
+    
+               }
+            } 
+            </script>
         <h3 style="margin: 60px; color:white;">Graphs</h3>
-     <select id="test1" name="form_select" onchange="showDiv(this)" style="margin-top: 10px; margin-left: 180px; width: 150px; height: 40px;">
+        <div class="row">
+            <div class="col-lg-9 col-md-9"  style="padding-left: 20px;">
+     <select id="test1" name="form_select" onchange="showDiv1(this)" style="margin-top: 10px;  width: 150px; height: 40px;">
             <option value="0">3D bar graph</option>
             <option value="1">3D heatmap</option>
          </select>
         <div id="first2">
-            <iframe src="http://127.0.0.1:5000/mapbox1.html" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px; margin-top: 20px;"></iframe>
+            <iframe src="http://127.0.0.1:5000/mapbox10.html" frameborder="0" style="height: 800px;width: 100%;  margin-top: 20px; overflow-y: hidden !important;"></iframe>
         </div>
         <div id="hidden_div1" style="display: none;">
-            <iframe src="http://127.0.0.1:5000/mapbox3.html" frameborder="0" style="height: 500px;width: 1000px; margin-left: 180px; margin-top: 20px;"></iframe>
+            <iframe src="http://127.0.0.1:5000/mapbox3.html" frameborder="0" style="height: 800px;width: 100%; margin-top: 20px;"></iframe>
         </div>
-
-
-        
+    </div>
+        <div class="col-lg-3 col-md-3 legends" style="margin-top: 100px;">
+            <div class="row">
+              <div>
+                <h4>Legend</h4>
+              </div>
+            </div>
+  
+            <div class="row">
+              <h6>Depiction of the color schemes are as follows:</h6>
+            </div>
+  
+            <div class="row color-div">
+              <div class="legend" style="background-color: rgb(153, 0, 153); color: transparent;">1</div>
+              <div class="legend" style="background-color: rgb(204, 0, 153); color: transparent;">2</div>
+              <div class="legend" style="background-color: rgb(255, 51, 204); color: transparent;">3</div>
+              <div class="legend" style="background-color: rgb(255, 0, 0); color: transparent;">4</div>
+              <div class="legend" style="background-color: rgb(255, 102, 0); color: transparent;">5</div>
+              <div class="legend" style="background-color: rgb(255, 255, 0); color: transparent;">6</div>
+            </div>
+            <div class="row">
+              <div class="col-1-1">Low</div>
+              <div style="margin-right: 16%;">Heatmap</div>
+              <div class="col-1-2">High</div>
+            </div>
+  
+            <div class="row color-div">
+              <div class="legend" style="background-color: rgb(0, 204, 204); color: transparent;">1</div>
+              <div class="legend" style="background-color: rgb(0, 255, 255); color: transparent;">2</div>
+              <div class="legend" style="background-color: rgb(255, 255, 77); color: transparent;">3</div>
+              <div class="legend" style="background-color: rgb(255, 153, 51); color: transparent;">4</div>
+              <div class="legend" style="background-color: rgb(255, 102, 0); color: transparent;">5</div>
+              <div class="legend" style="background-color: rgb(255, 0, 0); color: transparent;">6</div>
+            </div>
+            <div class="row">
+              <div class="col-1-1">Low</div>
+              <div style="margin-right: 31%;">AQI</div>
+              <div class="col-1-2">High</div>
+            </div>
+  
+            <div class="row color-div">
+              <div class="legend" style="background-color: rgb(153, 0, 153); color: transparent;">1</div>
+              <div class="legend" style="background-color: rgb(204, 0, 153); color: transparent;">2</div>
+              <div class="legend" style="background-color: rgb(255, 51, 204); color: transparent;">3</div>
+              <div class="legend" style="background-color: rgb(255, 179, 26); color: transparent;">4</div>
+              <div class="legend" style="background-color: rgb(255, 204, 0); color: transparent;">5</div>
+              <div class="legend" style="background-color: rgb(255, 255, 0); color: transparent;">6</div>
+            </div>
+            <div class="row">
+              <div class="col-1-1">Low</div>
+              <div style="margin-right: 23%;">Health</div>
+              <div class="col-1-2">High</div>
+            </div>
+  
+            <div class="row color-div">
+              <div class="legend" style="background-color: rgb(21,32,105); color: transparent;">1</div>
+              <div class="legend" style="background-color: rgb(5,102,141); color: transparent;">2</div>
+              <div class="legend" style="background-color: rgb(2,128,144); color: transparent;">3</div>
+              <div class="legend" style="background-color: rgb(0,168,150); color: transparent;">4</div>
+              <div class="legend" style="background-color: rgb(2,195,154); color: transparent;">5</div>
+              <div class="legend" style="background-color: rgb(240,243,189); color: transparent;">6</div>
+            </div>
+            <div class="row">
+              <div class="col-1-1">Low</div>
+              <div style="margin-right: 20%;">Literacy</div>
+              <div class="col-1-2">High</div>
+            </div>
+  
+            <div class="row color-div">
+              <div class="legend" style="background-color: rgb(21,32,105); color: transparent;">1</div>
+              <div class="legend" style="background-color: rgb(5,102,141); color: transparent;">2</div>
+              <div class="legend" style="background-color: rgb(2,128,144); color: transparent;">3</div>
+              <div class="legend" style="background-color: rgb(0,168,150); color: transparent;">4</div>
+              <div class="legend" style="background-color: rgb(2,195,154); color: transparent;">5</div>
+              <div class="legend" style="background-color: rgb(240,243,189); color: transparent;">6</div>
+            </div>
+            <div class="row">
+              <div class="col-1-1">Low</div>
+              <div style="margin-right: 16%;">Sex Ratio</div>
+              <div class="col-1-2">High</div>
+            </div>
+      
+        </div>
+        </div>
+        <!-- <script>
+            var graphs = {{concc | safe}}
+            Plotly.plot('bargraph', graphs, {});
+        </script> -->
          
          <script type="text/javascript">
-         function showDiv(select){
+         function showDiv1(select){
             if(select.value==1){
              document.getElementById('hidden_div1').style.display = "block";
              document.getElementById('first2').style.display = "none";
@@ -333,6 +489,7 @@
         // document.getElementById('hidden_div').style.display = style;
         // });
     </script>
+     
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
    AOS.init();

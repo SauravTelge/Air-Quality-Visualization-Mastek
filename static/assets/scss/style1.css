@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+.inner {
+  background: #549af5;
+  padding: 1em;
+  border-radius: 10px;
+  width: 270px;
+  clip-path: circle(6% at 91% 17%);
+  transition: all .5s ease-in-out;
+  cursor: pointer; }
+  .inner:hover {
+    clip-path: circle(75%);
+    background: #00B6FF; }
+  .inner span {
+    float: right;
+    color: white;
+    font-weight: bold;
+    transition: color .5s;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 10px; }
+  .inner:hover span {
+    color: rgba(255, 255, 255, 0); }
+  .inner h1 {
+    color: white;
+    margin: 0; }
+  .inner p {
+    color: white;
+    font-size: .8rem; }
+
+/*# sourceMappingURL=style1.css.map */

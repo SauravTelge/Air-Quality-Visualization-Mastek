@@ -7,7 +7,7 @@ dat = pd.read_excel('m-ward.xlsx')
 risk = [[x for x in range(240)] for y in range(240)]
 dict1={"AQI":[],"time":[],"city":[],"pm2.5":[],"risk":risk,"o3":[]}
 for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
-    querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"72"}
+    querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"48"}
     url = "https://air-quality.p.rapidapi.com/forecast/airquality"
     headers = {
         'x-rapidapi-key': "3b22fa1263mshb51aa6ab6be5039p122353jsn10ddade3b058",
@@ -33,7 +33,7 @@ for place,lat, lan in zip(dat['Place'],dat['Latitude'], dat['Longitude']):
         dict1['pm2.5'].append(pm25)
     for i in range(len(dict1['o3'])):
         # print(dict1['risk'][i])
-        if dict1['pm2.5'][i]>0 and dict1['pm2.5'][i]<30:
+        if dict1['o3'][i]>0 and dict1['pm2.5'][i]<30:
             dict1['risk'][i]='0'
         elif dict1['pm2.5'][i]>30 and dict1['pm2.5'][i]<60:
             dict1['risk'][i]='1'

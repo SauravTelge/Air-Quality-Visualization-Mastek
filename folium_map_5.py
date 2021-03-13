@@ -110,7 +110,7 @@ def popup_html_aqi(aqi, place, color,so2, no2, pm10,co,o3,pm25):
   <body>
   <div style='height: 50px;color:white; opacity: 0.8;background-color:{}'""".format(color) + """>
   <p style='padding-top: 10px;'>AQI: {}""".format(aqi) + """</p>
-  <image src='C:/Users/DELL/OneDrive/Pictures/Saved Pictures/foot.jpg' alt='sample'/>
+
   </div>
 
   <div>
@@ -204,22 +204,11 @@ diction = {"locations_43": 3, "locations_71": 0, "locations_74": 2, "locations_8
 
 
 def findcolor(loc):
-    col = colorEval(data.iloc[diction[loc]]["AQI"])
+    col = colorEval(loc)
     return col
 
 
-folium.Polygon(locations_43, popup=None, color=findcolor("locations_43"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_43")).add_to(m)
-folium.Polygon(locations_71, popup=None, color=findcolor("locations_71"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_71")).add_to(m)
-folium.Polygon(locations_74, popup=None, color=findcolor("locations_74"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_74")).add_to(m)
-folium.Polygon(locations_88, popup=None, color=findcolor("locations_88"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_88")).add_to(m)
-folium.Polygon(locations_89, popup=None, color=findcolor("locations_89"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_89")).add_to(m)
-folium.Polygon(locations_94, popup=None, color=findcolor("locations_94"), weight=4, opacity=0.8,
-               fill_color=findcolor("locations_94")).add_to(m)
+
 
 
 # ****************************************************************************************************************8
@@ -234,7 +223,7 @@ def colorDecide(event):
 
 
 events = ['AQI', 'Health', 'Demography']
-
+dic={}
 for event in events:
 
     cluster = folium.plugins.MarkerCluster(control=False).add_to(m)
@@ -265,6 +254,8 @@ for event in events:
         o3=pretty_json['data'][0]['o3']
         co=pretty_json['data'][0]['co']
         pm25=pretty_json['data'][0]['pm25']
+        dic[place]=aqi
+        print(dic)
         if event == 'AQI':
             color = colorEval(aqi)
             html = popup_html_aqi(aqi, place, color, so2, no2, pm10,co,o3,pm25)
@@ -299,5 +290,17 @@ for event in events:
                           ).add_to(subgroup)
 
     subgroup.add_to(m)
+folium.Polygon(locations_43, popup=None, color=findcolor(dic['Govandi']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Govandi'])).add_to(m)
+folium.Polygon(locations_71, popup=None, color=findcolor(dic['Chembur']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Chembur'])).add_to(m)
+folium.Polygon(locations_74, popup=None, color=findcolor(dic['Mahul']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Mahul'])).add_to(m)
+folium.Polygon(locations_88, popup=None, color=findcolor(dic['Shivaji Nagar']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Shivaji Nagar'])).add_to(m)
+folium.Polygon(locations_89, popup=None, color=findcolor(dic['Tilak Nagar']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Tilak Nagar'])).add_to(m)
+folium.Polygon(locations_94, popup=None, color=findcolor(dic['Anushakti']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Anushakti'])).add_to(m)
 folium.LayerControl(collapsed=False).add_to(m)
-m.save(outfile="name1.html")
+m.save(outfile="templates/name1.html")
