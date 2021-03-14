@@ -85,7 +85,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 
     <!-- Sidenav -->
 
@@ -625,8 +625,9 @@
                 <!-- </div> -->
             </div>
         </div>
+        <h2 style="text-align:center; color: #111;">{{place}}</h2>
         <div class="row" id="aqi"  >
-                    
+            
             <div class="col-12">
                 
                 <div class="card shadow p-3 mb-5 bg-white rounded mx-auto" style="width: 18rem;">
@@ -676,7 +677,7 @@
                       <p><b>Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.</b></p>
                   </div>
                 <div class="card-body" style=" position: relative;">
-                    <h5 class="card-title text-center">pm2.5 : {{pm25}}</h5>
+                    <h5 class="card-title text-center">PM2.5 : {{pm25}}</h5>
                   <p class="card-text"></p>
                 </div>
               </div>
@@ -691,7 +692,7 @@
                       <p><b>PM10 are very small particles found in dust & smoke.Exposure to high concentrations of PM10 can result in health impacts ranging from coughing & wheezing to asthma attacks & bronchitis to high blood pressure, heart attack, strokes & premature death.</b></p>
                   </div>
                 <div class="card-body" style=" position: relative;">
-                    <h5 class="card-title text-center" >pm10 : {{pm10}}</h5>
+                    <h5 class="card-title text-center" >PM10 : {{pm10}}</h5>
                   <p class="card-text"></p>
                 </div>
               </div>

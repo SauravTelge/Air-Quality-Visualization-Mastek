@@ -91,7 +91,7 @@
     <!-- <link rel="stylesheet" href="../static/assets/vendor/bootstrap/dist/min/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
+  <body style="overflow-x: hidden;">
     <nav class="navbar navbar-vertical fixed-left navbar-expand-md "  id="sidenav-main">
       <div data-aos="zoom-out-right" class="container-fluid">
           <!-- Toggler -->
@@ -322,7 +322,34 @@
             },
           ],
           dom: "Bfrtip",
-          buttons: ["copy", "csv", "excel", "pdf", "print"],
+          buttons:  ["copy", {
+      extend: 'csv',
+      filename: "Mahul"
+    }, {
+      extend: 'excel',
+      title: "Maul",message: '<center><h4 style="margin-top:-40px;">Mahul</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+    },  {extend: "pdf",
+					className: "btn-sm btn-success",
+          title: "Mahul",
+          message: '<center><h4 style="margin-top:-40px;">Mahul</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+				},{
+				extend: "print",
+					className: "btn-sm btn-success",
+					
+				message: '<center><h4 style="margin-top:-40px;">Mahul</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+				}],
         });
       });
 
@@ -361,7 +388,34 @@
             },
           ],
           dom: "Bfrtip",
-          buttons: ["copy", "csv", "excel", "pdf", "print"],
+          buttons: ["copy", {
+      extend: 'csv',
+      filename: x
+    }, {
+      extend: 'excel',
+      title: x,message: '<center><h4 style="margin-top:-40px;">'+x+'</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+    },  {extend: "pdf",
+					className: "btn-sm btn-success",
+          title: x,
+          message: '<center><h4 style="margin-top:-40px;">'+x+'</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+				},{
+				extend: "print",
+					className: "btn-sm btn-success",
+					
+				message: '<center><h4 style="margin-top:-40px;">'+x+'</h4>\
+							</center>',
+				customize: function ( win ) {
+					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
+				}
+				}],
         });
       }
     </script>
