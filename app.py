@@ -13,7 +13,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 # Initialize the Flask app
 app = Flask(__name__)
-stations = ['Chembur', 'Mahul', 'Govandi', 'Mankhurd', 'Worli','Anushakti nagar']
+stations = ['Chembur', 'Mahul', 'Govandi', 'Mankhurd', 'Tilak Nagar','Anushakti nagar']
 # Handle requests to the root of the web site, returning the home page
 data = pd.read_csv(r"m-ward.csv")
 aqilist = []
@@ -22,7 +22,7 @@ for lon1,lat1 in zip(data['Longitude'],data['Latitude']):
     querystring = {"lat":f"{lat1}","lon":f"{lon1}","hours":"72"}
     url = "https://air-quality.p.rapidapi.com/forecast/airquality"
     headers = {
-        'x-rapidapi-key': "f205b872fdmsh9d2678307ca70fep18ad3cjsn269abfa532a5",
+        'x-rapidapi-key': "a9234b6173mshae3954f7f9751ebp101cafjsn885852508da6",
         'x-rapidapi-host': "air-quality.p.rapidapi.com"
         }
 
@@ -80,11 +80,11 @@ time = timeStamp
 @app.route("/")
 def home():
     return render_template("index.html",maxAqi = maxAqi, minAqi = minAqi, count = count, time = time, minStn = minStn, maxStn = maxStn )
-@app.route('/Mahul.txt')
-def ajax_ddl():
-    # content = 
-    # return Response(content, mimetype='text/plain')
-    return Flask.send_file("Mahul.txt")
+# @app.route('/Mahul.txt')
+# def ajax_ddl():
+#     # content = 
+#     # return Response(content, mimetype='text/plain')
+#     return Flask.send_file("Mahul.txt")
 @app.route("/map",methods=['POST','GET'])
 def map():
     return render_template("name1.html" )
@@ -150,15 +150,15 @@ def map():
 #         return graphJSON
 #     conce=createp()
 #     return render_template("graphs.html" ,concc=conce)
-@app.route("/concpm25")
-def conc1():
-    return render_template("concpm25.html" )
+# @app.route("/concpm25")
+# def conc1():
+#     return render_template("concpm25.html" )
 # @app.route("/concpm10")
 # def conc2():
 #     return render_template("concpm10.html" )
-@app.route("/conco3")
-def conc3():
-    return render_template("conco3.html" )
+# @app.route("/conco3")
+# def conc3():
+#     return render_template("conco3.html" )
 # @app.route("/concso2")
 # def conc4():
 #     return render_template("concso2.html" )
@@ -171,7 +171,15 @@ def heatg():
     return render_template("mapbox3.html" )
 @app.route("/graphs.html")
 def graphe():
-    return render_template("graphs.html" )
+
+    filename = 'pm25.sav'
+    l1 = pickle.load(open(filename, 'rb'))
+    l2 = pickle.load(open('pm10.sav', 'rb'))
+    l3 = pickle.load(open('no2.sav', 'rb'))
+    l4 = pickle.load(open('so2.sav', 'rb'))
+    l5 = pickle.load(open('o3.sav', 'rb'))
+    l6 = pickle.load(open('co.sav', 'rb'))
+    return render_template("graphs.html" ,g1=l1,g2=l2,g3=l3,g4=l4,g5=l5,g6=l6)
 @app.route("/templates/tables.html")
 def tables():
     
@@ -189,7 +197,7 @@ def forecast():
             querystring = {"lat":f"{lat}","lon":f"{lan}","hours":"72"}
             url = "https://air-quality.p.rapidapi.com/forecast/airquality"
             headers = {
-                'x-rapidapi-key': "f205b872fdmsh9d2678307ca70fep18ad3cjsn269abfa532a5",
+                'x-rapidapi-key': "a9234b6173mshae3954f7f9751ebp101cafjsn885852508da6",
                 'x-rapidapi-host': "air-quality.p.rapidapi.com"
                 }
 

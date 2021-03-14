@@ -85,7 +85,7 @@ def popup_html_health(aqi, place, color, cardiac, allergic, copd):
   </div>
 
   <div>
-  <p><b>Cardiac ailments:</b> {}""".format(cardiac) + """per 10,000 people</p>
+  <p><b>Cardiac ailments:</b> {}""".format(cardiac) + """ per 10,000 people</p>
   </div>
 
   <div>
@@ -118,24 +118,24 @@ def popup_html_aqi(aqi, place, color,so2, no2, pm10,co,o3,pm25):
   </div>
 
   <div>
-  <p><b>SO2 concentration:</b> {}""".format(so2) + """</p>
+  <p><b>SO2 concentration:</b> {}""".format(so2) + """ ppm</p>
   </div>
 
   <div>
-  <p><b>NO2 concentration:</b> {}""".format(no2) + """</p>
+  <p><b>NO2 concentration:</b> {}""".format(no2) + """ ppm</p>
   </div>
 
   <div>
-  <p><b>PM10 concentration:</b> {}""".format(pm10) + """</p>
+  <p><b>PM10 concentration:</b> {}""".format(pm10) + """ ppm</p>
   </div>
    <div>
-  <p><b>CO concentration:</b> {}""".format(co) + """</p>
+  <p><b>CO concentration:</b> {}""".format(co) + """ ppm</p>
   </div>
    <div>
-  <p><b>O3 concentration:</b> {}""".format(o3) + """</p>
+  <p><b>O3 concentration:</b> {}""".format(o3) + """ ppm</p>
   </div>
    <div>
-  <p><b>PM2.5 concentration:</b> {}""".format(pm25) + """</p>
+  <p><b>PM2.5 concentration:</b> {}""".format(pm25) + """ ppm</p>
   </div>
 
   </body>
@@ -146,6 +146,7 @@ def popup_html_aqi(aqi, place, color,so2, no2, pm10,co,o3,pm25):
 
 
 def colorEval(aqi):
+    aqi=int(aqi)
     if aqi in range(0, 51):
         color = '#05F21A'
     elif aqi in range(51, 101):
@@ -204,6 +205,7 @@ diction = {"locations_43": 3, "locations_71": 0, "locations_74": 2, "locations_8
 
 
 def findcolor(loc):
+    loc=int(loc)
     col = colorEval(loc)
     return col
 
@@ -236,12 +238,12 @@ for event in events:
             data['Litracy Rate'], data['Sex Ratio'], data['Child Population'],
             data['Cardiac Ailments'], data['Allergic Rhintis'], data['COPD'],data['lat'],data['lon']):
         
-        url = "https://air-quality.p.rapidapi.com/current/airquality"
+        url = "https://air-quality.p.rapidapi.com/forecast/airquality"
 
-        querystring = {"lon":f"{lon1}","lat":f"{lat1}"}
+        querystring = {"lat":f"{lat1}","lon":f"{lon1}","hours":"72"}
 
         headers = {
-            'x-rapidapi-key': "9a6ba754b5mshc3a4204662632f8p195c72jsn3c383b057633",
+            'x-rapidapi-key': "29b6513e48msh01b781d2f47959ap1dc775jsn99ae781400d8",
             'x-rapidapi-host': "air-quality.p.rapidapi.com"
             }
 
@@ -290,14 +292,14 @@ for event in events:
                           ).add_to(subgroup)
 
     subgroup.add_to(m)
-folium.Polygon(locations_43, popup=None, color=findcolor(dic['Govandi']), weight=4, opacity=0.8,
-               fill_color=findcolor(dic['Govandi'])).add_to(m)
+folium.Polygon(locations_43, popup=None, color=findcolor(dic['Shivaji Nagar']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Shivaji Nagar'])).add_to(m)
 folium.Polygon(locations_71, popup=None, color=findcolor(dic['Chembur']), weight=4, opacity=0.8,
                fill_color=findcolor(dic['Chembur'])).add_to(m)
 folium.Polygon(locations_74, popup=None, color=findcolor(dic['Mahul']), weight=4, opacity=0.8,
                fill_color=findcolor(dic['Mahul'])).add_to(m)
-folium.Polygon(locations_88, popup=None, color=findcolor(dic['Shivaji Nagar']), weight=4, opacity=0.8,
-               fill_color=findcolor(dic['Shivaji Nagar'])).add_to(m)
+folium.Polygon(locations_88, popup=None, color=findcolor(dic['Govandi']), weight=4, opacity=0.8,
+               fill_color=findcolor(dic['Govandi'])).add_to(m)
 folium.Polygon(locations_89, popup=None, color=findcolor(dic['Tilak Nagar']), weight=4, opacity=0.8,
                fill_color=findcolor(dic['Tilak Nagar'])).add_to(m)
 folium.Polygon(locations_94, popup=None, color=findcolor(dic['Anushakti']), weight=4, opacity=0.8,

@@ -224,7 +224,7 @@
   <div class="main-content">
     <div class="container-fluid" style="padding-top: 20px;">
     <button id="btn1" class="btn btn-primary" onclick="tabs('Mahul')">Mahul</button>
-    <button id="btn2" class="btn btn-primary" onclick="tabs('Worli')">Worli</button>
+    <button id="btn2" class="btn btn-primary" onclick="tabs('Tilak Nagar')">Tilak Nagar</button>
     <button id="btn3" class="btn btn-primary" onclick="tabs('Govandi')">Govandi</button>
     <button id="btn4" class="btn btn-primary" onclick="tabs('Mankhurd')">Mankhurd</button>
     <button id="btn5" class="btn btn-primary" onclick="tabs('Anushakti')">Anushakti</button>
@@ -327,19 +327,11 @@
       filename: "Mahul"
     }, {
       extend: 'excel',
-      title: "Maul",message: '<center><h4 style="margin-top:-40px;">Mahul</h4>\
-							</center>',
-				customize: function ( win ) {
-					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
-				}
+      title: "Maul"
     },  {extend: "pdf",
 					className: "btn-sm btn-success",
-          title: "Mahul",
-          message: '<center><h4 style="margin-top:-40px;">Mahul</h4>\
-							</center>',
-				customize: function ( win ) {
-					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
-				}
+          title: "Mahul"
+          
 				},{
 				extend: "print",
 					className: "btn-sm btn-success",
@@ -393,19 +385,11 @@
       filename: x
     }, {
       extend: 'excel',
-      title: x,message: '<center><h4 style="margin-top:-40px;">'+x+'</h4>\
-							</center>',
-				customize: function ( win ) {
-					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
-				}
+      title: x
     },  {extend: "pdf",
 					className: "btn-sm btn-success",
-          title: x,
-          message: '<center><h4 style="margin-top:-40px;">'+x+'</h4>\
-							</center>',
-				customize: function ( win ) {
-					$(win.document.body).find( 'table' ).append('<br<br/><br><h4 class="">Air Quality Visualization</h4><br><br><h4 class="">Project Deep Blue AQV - 7</h4>');
-				}
+          title: x
+         
 				},{
 				extend: "print",
 					className: "btn-sm btn-success",

@@ -80,7 +80,12 @@
               background-color: black;
             }
            
-
+            .hide {
+  display: none;
+}
+.map-container {
+  text-align: center;
+}
     </style>
 
     <meta charset="utf-8">
@@ -101,6 +106,7 @@
     <!-- <link rel="stylesheet" href="../static/assets/vendor/bootstrap/dist/min/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 </head>
 
@@ -248,19 +254,67 @@
 
         </div> -->
         <!-- <p style="margin-top: 150px; margin-left: 200px;">Select the gas:</p> -->
-        <h3 style="margin-left: 60px; padding-top:5%; color:white;">Air Pollutants</h3>
+        <h1 style="margin-left: 60px; padding-top:5%; color:white;">Air Pollutants</h1>
         <!-- <form action="/conc" method="post"> -->
-        <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 50px; width: 150px; height: 40px; margin-left: 1%;">
+        <!-- <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 50px; width: 150px; height: 40px; margin-left: 1%;">
 
             <option value="0">pm 2.5</option>
-            <option value="1">o3</option>
+            <option value="1">o3</option> -->
             <!-- <option value="2">pm10</option>
             <option value="3">no2</option>
             <option value="4">so2</option>
             <option value="5">co</option> -->
-         </select>
+         <!-- </select> -->
         <!-- </form> -->
-         
+        <div class="map-container">
+            <div class="inner-basic division-map div-toggle" data-target=".division-details" id="divisiondetail">
+              <button class="map-point-sm btn btn-info" data-aos="zoom-in" data-show=".darwin">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>PM2.5</p>
+                  </div>
+                </div>
+              </button>
+              <button class="map-point-sm btn btn-info" data-aos="zoom-in" data-show=".ptown">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>PM10</p>
+                  </div>
+                </div>
+              </button>
+              <button class="map-point-sm btn btn-info"data-aos="zoom-in" data-show=".philly">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>NO<sub>2</sub></p>
+                  </div>
+                </div>
+              </button>
+              <button class="map-point-sm btn btn-info" data-aos="zoom-in"data-show=".dela">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>SO<sub>2</sub></p>
+                  </div>
+                </div>
+              </button>
+              <button class="map-point-sm btn btn-info"data-aos="zoom-in" data-show=".hela">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>O<sub>3</sub></p>
+                  </div>
+                </div>
+              </button>
+              <button class="map-point-sm btn btn-info" data-aos="zoom-in" data-show=".sam">
+                <div class="content">
+                  <div class="centered-y">
+                    <p>CO</p>
+                  </div>
+                </div>
+              </button>
+            </div><!-- end inner basic -->
+          </div>
+          
+          
+          
         <!-- <select id="test" name="form_select" onchange="showDiv(this)" style="margin-top: 150px; margin-left: 200px;">
             <option value="0">pm 2.5</option>
             <option value="1">o3</option>
@@ -268,15 +322,40 @@
         
          <div class="row">
             <div class="col-lg-9 col-md-9"  style="padding-left: 20px;">
-            <div id="first" >
+            <!-- <div id="first" >
                 <iframe src="http://127.0.0.1:5000/concpm25" frameborder="0" style="height: 500px;width: 100%;"></iframe>
             </div>
             <div id="hidden_div" style="display: none; ">
                 <iframe src="http://127.0.0.1:5000/conco3" frameborder="0" style="height: 500px;width: 100%;margin-right: 30%;"></iframe>
-            </div>
-           
+            </div> -->
+            <div class="map-container">
+                <div class="inner-basic division-details">
+                  <div class="initialmsg">
+                    <p>Choose button above</p>
+                  </div>
+                  <div class="darwin">
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;" id="bargraph" ></div>
+                  </div>
+                  <div class="ptown hide" >
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;" id="bargraph1" ></div>
+                  </div>
+                  <div class="philly hide">
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;" id="bargraph2" ></div>
+                  </div>
+                  <div class="dela hide">
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;" id="bargraph3" ></div>
+                  </div>
+                  <div class="hela hide">
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;" id="bargraph4" ></div>
+                  </div>
+                  <div class="sam hide">
+                    <div  data-aos="zoom-in" style="width: 900px; margin-left: 1%;"  id="bargraph5" ></div>
+                  </div>
+                
+              </div>
                 </div>
-                <div class="col-lg-3 col-md-3"   style="padding-left: 20px; color: black; right: 2%;" ><div class="jumbotron shadow-lg p-3 mb-5 bg-white rounded mx-auto" id="info"> Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.</div></div>
+              </div>
+                <div class="col-lg-3 col-md-3"  data-aos="zoom-in" style="padding-left: 20px; color: black; right: 2%;" ><div class="jumbotron shadow-lg p-3 mb-5 bg-white rounded mx-auto" id="info"> Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.</div></div>
     </div>
             <!-- <div id="first">
                 <br>
@@ -305,6 +384,30 @@
 
         <br>
         <script type="text/javascript">
+  //        $(document).ready(function () {
+          
+  //           var show = "darwin";
+  // $(show).removeClass("hide").siblings().addClass("hide");
+        $(document).on('click', '.map-point-sm', function() {
+          // console.log($(this).data('show'));
+         
+  var show = $(this).data('show');
+  $(show).removeClass("hide").siblings().addClass("hide");
+if (this.innerHTML.includes("PM10")==true){
+  document.getElementById("info").innerHTML="PM10 are very small particles found in dust & smoke.Exposure to high concentrations of PM10 can result in health impacts ranging from coughing & wheezing to asthma attacks & bronchitis to high blood pressure, heart attack, strokes & premature death.";}
+else if (this.innerHTML.includes("NO")==true){
+  document.getElementById("info").innerHTML="Nitrogen dioxide, or NO<sub>2</sub>, is a gaseous air pollutant composed of nitrogen and oxygen. Breathing air with a high concentration of NO2 can irritate airways in the human respiratory system and can lead to serious breathing disorders.";}
+  else if (this.innerHTML.includes("SO")==true){
+  document.getElementById("info").innerHTML="Sulfur dioxide (SO<sub>2</sub>) is a toxic gas. Sulfur dioxide affects the respiratory system, particularly lung function, and can irritate the eyes. It causes coughing, mucus secretion and aggravates conditions such as asthma and chronic bronchitis.";}
+  else if (this.innerHTML.includes("CO")==true){
+  document.getElementById("info").innerHTML="Carbon monoxide (CO) is a toxic air pollutant. It displaces oxygen in the blood & hence causes deprivation in various vital organs. At very high levels, CO can cause dizziness, confusion, unconsciousness and death.";}
+  else if (this.innerHTML.includes("O<sub>3</sub>")==true){
+  document.getElementById("info").innerHTML="Ozone is a colorless gas that can be good or bad, depending on where it is. Ozone in the stratosphere is good because it shields the earth from the sun's ultraviolet rays. Ozone at ground level, where we breathe, is bad because it can harm human health.";}
+  else if (this.innerHTML.includes("PM2.5")==true){
+  document.getElementById("info").innerHTML="Fine particulate matter (PM2.5) is an air pollutant that is a concern for people's health when levels in air are high. PM2.5 are tiny particles in the air that reduce visibility and cause the air to appear hazy when levels are elevated.";}
+});
+</script>
+        <!-- <script type="text/javascript">
             function showDiv(select){
                if(select.value==1){
                    console.log("HI");
@@ -320,8 +423,8 @@
     
                }
             } 
-            </script>
-        <h3 style="margin: 60px; color:white;">Graphs</h3>
+            </script> -->
+        <h1 style="margin: 60px; color:white;">Graphs</h1>
         <div class="row">
             <div class="col-lg-9 col-md-9"  style="padding-left: 20px;">
      <select id="test1" name="form_select" onchange="showDiv1(this)" style="margin-top: 10px;  width: 150px; height: 40px;">
@@ -470,7 +573,6 @@
     <!-- Core -->
     <!-- <script src="{{ url_for('static', filename= './assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename= './assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
@@ -482,12 +584,18 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script>
-        var graphs = {{plot | safe}}
+        var graphs = {{g1 | safe}}
         Plotly.plot('bargraph', graphs, {});
-        // document.getElementById('test').addEventListener('change', function () {
-        // var style = this.value == 1 ? 'block' : 'none';
-        // document.getElementById('hidden_div').style.display = style;
-        // });
+        var graphs1 = {{g2 | safe}}
+        Plotly.plot('bargraph1', graphs1, {});
+        var graphs2 = {{g3 | safe}}
+        Plotly.plot('bargraph2', graphs2, {});
+        var graphs3 = {{g4 | safe}}
+        Plotly.plot('bargraph3', graphs3, {});
+        var graphs4 = {{g5 | safe}}
+        Plotly.plot('bargraph4', graphs4, {});
+        var graphs5 = {{g6 | safe}}
+        Plotly.plot('bargraph5', graphs5, {});
     </script>
      
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
